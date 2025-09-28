@@ -54,6 +54,12 @@ Run the following script:
 python check_connection.py
 ```
 
+## Common issues:
+If the motor refuses to arm, run this calibration script, it may fix the issue:
+```bash
+python calibrate.py
+```
+
 
 ## Usage
 
