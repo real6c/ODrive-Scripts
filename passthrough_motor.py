@@ -7,7 +7,7 @@ import odrive
 from odrive.enums import *
 import time
 
-def move_motor(velocity=15, target_pos=0.0, accel_distance=2.0, decel_percentage=0.15, 
+def move_motor(velocity=10, target_pos=0.0, accel_distance=2.0, decel_percentage=0.15, 
                min_start_velocity=5.0, min_end_velocity=1.0):
     """
     Move ODrive motor to target position with linear acceleration/deceleration

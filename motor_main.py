@@ -50,7 +50,7 @@ for i in range(5):
     start_pos = axis.pos_estimate
     
     # Move motor
-    passthrough_motor.move_motor(velocity=15, target_pos=curr_target_pos, accel_distance=2.0, decel_percentage=0.15, min_start_velocity=5.0, min_end_velocity=1.0)
+    passthrough_motor.move_motor(velocity=10, target_pos=curr_target_pos, accel_distance=2.0, decel_percentage=0.15, min_start_velocity=5.0, min_end_velocity=1.0)
     
     # Calculate error and store it
     final_pos = axis.pos_estimate

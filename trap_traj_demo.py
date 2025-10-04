@@ -8,8 +8,8 @@ from odrive.enums import *
 import time
 
 # Constants
-VELOCITY = 50  # rev/s - much slower and safer
-ACCELERATION = 50  # rev/s² - acceleration rate (start conservative)
+VELOCITY = 15  # rev/s - much slower and safer
+ACCELERATION = 20  # rev/s² - acceleration rate (start conservative)
 TARGET_POS = 50  # revolutions
 
 def main():
@@ -31,6 +31,11 @@ def main():
     # Set velocity and acceleration limits for trapezoidal trajectory
     axis.controller.config.vel_limit = VELOCITY  # turns/s
     axis.controller.config.vel_ramp_rate = ACCELERATION  # turns/s² (acceleration/deceleration rate)
+    
+    # Configure trapezoidal trajectory parameters
+    axis.trap_traj.config.vel_limit = VELOCITY  # rev/s
+    axis.trap_traj.config.accel_limit = ACCELERATION  # rev/s²
+    axis.trap_traj.config.decel_limit = ACCELERATION  # rev/s²
     
     # Set target position (in turns as per docs)
     axis.controller.input_pos = TARGET_POS  # turns
