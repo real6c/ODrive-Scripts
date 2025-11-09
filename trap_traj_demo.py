@@ -8,9 +8,9 @@ from odrive.enums import *
 import time
 
 # Constants
-VELOCITY = 15  # rev/s - much slower and safer
+VELOCITY = 25  # rev/s - much slower and safer
 ACCELERATION = 20  # rev/s² - acceleration rate (start conservative)
-TARGET_POS = 50  # revolutions
+TARGET_POS = 150  # revolutions
 
 def main():
     # Connect to ODrive
