@@ -32,7 +32,7 @@ def disarm_motor(odrv):
     print("\033[92mMotor DISARMED\033[0m")  # Green text
     return axis
 
-def trap_traj(odrv, axis, velocity, acceleration, target_pos):
+def trap_traj(odrv, axis, velocity, acceleration, target_pos, print_output):
     # Set control mode to use trapezoidal trajectory for accurate positioning
     axis.controller.config.control_mode = ControlMode.POSITION_CONTROL
     axis.controller.config.input_mode = InputMode.TRAP_TRAJ
@@ -59,7 +59,8 @@ def trap_traj(odrv, axis, velocity, acceleration, target_pos):
         motor_current = axis.motor.electrical_power / odrv.vbus_voltage  # Current draw (P/V)
         bus_voltage = odrv.vbus_voltage  # Bus voltage
         
-        print(f"POS: {current_pos:.3f} | TARGET: {target_pos:.3f} | VEL: {current_vel:.2f} | TORQUE: {torque_estimate:.3f} | I: {motor_current:.2f}A | V: {bus_voltage:.3f}V")
+        if print_output:
+            print(f"POS: {current_pos:.3f} | TARGET: {target_pos:.3f} | VEL: {current_vel:.2f} | TORQUE: {torque_estimate:.3f} | I: {motor_current:.2f}A | V: {bus_voltage:.3f}V")
         
         if abs(current_pos - target_pos) < 0.1:  # Within 0.1 turns
             print("Target reached!")
